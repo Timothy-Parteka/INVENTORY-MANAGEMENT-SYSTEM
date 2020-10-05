@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class ="display-5">TABLE FOR BANKING HALL BARCODE SCANNERS PRESENT</h1>
+
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+.lead2 {
+  margin-left: 46%;
+  margin-top: 20px;
+}
+</style>
+
+
+
+
+
+<table>
+  <tr>
+    <th>SERIAL NUMBER</th>
+    <th>TYPE</th>
+    <th>DATE CREATED</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  {% for b in banking_hall_barcodescanner_table %}
+  <tr>
+    <td>{{ b.serial_number }}</td>
+    <td>{{ b.type }}</td>
+    <td>{{ b.date_created }}</td>
+    <td><a href="{% url 'bankinghallbarcodescannerdetail' b.pk %}">details</a></td>
+    <td><a href="{% url 'bankinghallbarcodescannerupdate' b.pk %}">edit</a></td>
+    <td><a href="{% url 'bankinghallbarcodescannerdelete' b.pk %}">delete</a></td
+
+  </tr>
+  {% endfor %}
+
+</table>
+
+
+<div class="">
+
+  <p class="lead lead2" >
+     <a class="btn btn-primary btn-lg" href= "{% url 'bankinghallbarcodescannercreate' %}" role="button">ADD NEW</a>
+   </p>
+
+</div>
+
+
+{% endblock content %}

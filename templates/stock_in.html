@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+
+<h1 class ="display-5">STOCK IN</h1>
+
+
+
+<table>
+  <tr>
+    <th>ITEM</th>
+    <!-- <th>ITEM REF NO.</th> -->
+    <th>COUNT</th>
+    <th>DATE PURCHASED</th>
+    <!-- <th>BUSINESS NAME</th> -->
+    <th>RECEIVED</th>
+    <th>DATE RECEIVED</th>
+    <th>RECEIVED BY</th>
+
+  </tr>
+  {% for x in stockin %}
+  <tr>
+    <td>{{ x.item }}</td>
+    <!-- <td>{{ x.item_ref_no }}</td> -->
+    <td>{{ x.count }}</td>
+    <td>{{ x.date_purchased }}</td>
+    <!-- <td>{{ x.business_name }}</td> -->
+    <td>{{ x.received }}</td>
+    <td>{{ x.date_received }}</td>
+    <td>{{ x.received_by }}</td>
+
+
+
+  {% endfor %}
+
+
+</table>
+
+{% endblock content %}

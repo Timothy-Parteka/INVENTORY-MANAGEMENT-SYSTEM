@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+
+{% block title%}MESSAGES{% endblock title%}
+
+{% block content %}
+
+<h3>WELCOME TO THE MESSAGING BOARD</h3>
+
+<h4>MESSAGES POSTED</h4>
+
+{% for m in message_board_list %}
+<div class="card">
+
+ <div class="card-header">
+
+ <span class="font-weight-bold">{{ m.title }}</span> &middot;
+
+ <span class="text-muted">by {{ m.posted_by }} |
+
+  {{ m.time_posted }}</span>
+
+ </div>
+
+ <div class="card-body">
+
+   <p> {{ m.post }}</p>
+
+   <a href="{% url 'comment' %}">Comment</a>
+
+
+ </div>
+
+
+ <div class="card-footer">
+
+   {% for comment in messagingboard.comments.all %}
+
+   <p>
+     <span class="font-weight-bold">{{ comment.comment_by }} &middot;</span>
+
+      {{ comment }}
+   </p>
+
+   {% endfor %}
+</div>
+
+</div>
+
+
+<br />
+{% endfor %}
+
+{% endblock content %}

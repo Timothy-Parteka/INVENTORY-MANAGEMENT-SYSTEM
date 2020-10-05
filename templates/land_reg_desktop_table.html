@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1 class ="display-5">TABLE FOR LAND REGISTRATION DESKTOPS</h1>
+
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.lead2{
+  margin-left: 46%;
+  margin-top: 20px;
+}
+
+</style>
+
+
+<table>
+  <tr>
+    <th>CPU SERIAL NUMBER</th>
+    <th>MONITOR SERIAL NUMBER</th>
+    <th>KEYBOARD SERIAL NUMBER</th>
+    <th>LOCATION</th>
+    <th>DATE CREATED</th>
+    <th></th>
+    <th></th>
+    <th></th>
+
+  </tr>
+
+  {% for l in land_reg_desktop %}
+  <tr>
+    <td>{{ l.cpu_serial_number }}</td>
+    <td>{{ l.monitor_serial_number }}</td>
+    <td>{{ l.keyboard_serial_number }}</td>
+    <td>{{ l.floor_location }}</td>
+    <td>{{ l.date_created }}</td>
+    <td><a href="{% url 'landregdesktopdetails' l.pk  %}"> details</a></td>
+    <td><a href="{% url 'landregdesktopedit' l.pk  %}"> edit</a></td>
+    <td><a href="{% url 'landregdesktopdelete' l.pk %}">delete</a></td>
+  </tr>
+
+  {% endfor %}
+</table>
+
+
+<div class="">
+
+  <p class="lead lead2" >
+     <a class="btn btn-primary btn-lg" href= "{% url 'landregdesktopcreate' %}" role="button">ADD NEW</a>
+   </p>
+
+</div>
+
+
+
+{% endblock content %}

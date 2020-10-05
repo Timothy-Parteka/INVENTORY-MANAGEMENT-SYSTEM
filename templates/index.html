@@ -1,0 +1,30 @@
+<!-- this template extends base.html -->
+ {% extends 'base.html' %}
+
+
+{% block content %}
+
+  <div class= "jumbotron">
+
+  {% if user.is_authenticated %}
+    Hi, {{ user.email }}!
+
+
+
+  <h1 class ="display-4">INVENTORY MANAGEMENT SYSTEM</h1>
+
+   <p class="lead">
+    <a class="btn btn-primary btn-lg" href= "{% url 'messageboard' %}" role="button">MESSAGES POSTED</a>
+  </p>
+
+  </div>
+
+
+
+ {% else %}
+  <p>YOU ARE NOT LOGGED IN!!</p>
+  <a href="{% url 'login' %}">Log In</a> |
+  <a href="{% url 'signup' %}">Sign Up</a>
+ {% endif %}
+
+{% endblock content %}

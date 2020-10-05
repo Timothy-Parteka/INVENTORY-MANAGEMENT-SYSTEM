@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+
+<h1 class ="display-5">ORDERED ITEMS</h1>
+
+
+
+<table>
+  <tr>
+    <th>ITEM</th>
+    <th>COUNT</th>
+    <th>DATE ORDERED</th>
+    <th>REASON FOR ORDER</th>
+    <th>ORDERED BY</th>
+    <th>ORDERED</th>
+
+  </tr>
+  {% for x in ordered_item %}
+  <tr>
+    <td>{{ x.item }}</td>
+    <td>{{ x.count }}</td>
+    <td>{{ x.date_ordered }}</td>
+    <td>{{ x.reason_for_order }}</td>
+    <td>{{ x.ordered_by }}</td>
+    <td>{{ x.ordered}}</td>
+
+
+
+
+  {% endfor %}
+
+
+</table>
+
+{% endblock content %}

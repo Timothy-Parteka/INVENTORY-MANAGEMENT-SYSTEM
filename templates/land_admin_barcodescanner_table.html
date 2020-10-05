@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1 class ="display-5">TABLE FOR LAND ADMIN BARCODE SCANNERS</h1>
+
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.lead2{
+  margin-left: 46%;
+  margin-top: 20px;
+}
+
+</style>
+
+
+
+<table>
+  <tr>
+    <th>SERIAL NUMBER</th>
+    <th>TYPE</th>
+    <th>DATE UPDATED</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  {% for blist in barcodescanner_list %}
+  <tr>
+    <td>{{ blist.serial_number }}</td>
+    <td>{{ blist.type }}</td>
+    <td>{{ blist.date }}</td>
+    <td><a href="{% url 'landadminbarcodescannerdetails' blist.pk %}"> details</a></td>
+    <td><a href="{% url 'landadminbarcodescanneredit' blist.pk %}"> edit</a></td>
+    <td><a href="{% url 'landadminbarcodescannerdelete' blist.pk %}">delete</a></td>
+  </tr>
+
+  {% endfor %}
+</table>
+
+
+<div class="">
+
+  <p class="lead lead2" >
+     <a class="btn btn-primary btn-lg" href= "{% url 'landadminbarcodescannercreate' %}" role="button">ADD NEW</a>
+   </p>
+
+</div>
+
+
+
+{% endblock content %}

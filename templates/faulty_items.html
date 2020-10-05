@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class ="display-5">TABLE FOR FAULTY ITEMS</h1>
+
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+
+
+
+
+<table>
+  <tr>
+    <th>ITEM</th>
+    <th>ITEM SERIAL NUMBER</th>
+    <th>FAULTY DESCRIPTION</th>
+    <th>FROM LOCATION</th>
+    <th>REPAIRED</th>
+    <th>DATE REPAIRED</th>
+    <th>LOCATION RETURNED</th>
+  </tr>
+  {% for list in faultylist %}
+  <tr>
+    <td>{{ list.item }}</td>
+    <td>{{ list.item_serial_number }}</td>
+    <td>{{ list.faulty_description }}</td>
+    <td>{{ list.from_location }}</td>
+    <td>{{ list.repaired }}</td>
+    <td>{{ list.date_repaired }}</td>
+    <td>{{ list.location_returned }}</td>
+  {% endfor %}
+
+{% endblock content %}

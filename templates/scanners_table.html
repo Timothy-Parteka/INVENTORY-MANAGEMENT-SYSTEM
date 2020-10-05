@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.lead2{
+  margin-left: 46%;
+  margin-top: 20px;
+}
+
+</style>
+
+
+<h1 class ="display-5">TABLES FOR SCANNERS PRESENT</h1>
+
+
+
+<table>
+  <tr>
+    <th>SERIAL NUMBER</th>
+    <th>TYPE</th>
+    <th>DESCRIPTION</th>
+    <th>DATE CREATED</th>
+    <th>UPDATED BY</th>
+  </tr>
+
+  {% for list in scannerslist %}
+  <tr>
+    <td>{{ list.serial_number }}</td>
+    <td>{{ list.type }}</td>
+    <td>{{ list.description }}</td>
+    <td>{{ list.date_created }}</td>
+    <td>{{ list.updated_by }}</td>
+  </tr>
+
+  {% endfor %}
+</table>
+
+{% endblock content %}

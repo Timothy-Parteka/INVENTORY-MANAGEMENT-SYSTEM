@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+  <div class= "jumbotron" style="margin-left:20%; margin-right:20%">
+
+    <h6 class= "display-5">PLEASE LOG IN</h6>
+
+    <form action="" method="post">
+
+      {% csrf_token %}
+
+      {{ form|crispy }}
+
+    <button class="btn btn-success ml-Ǒ" type="submit" style="margin-left: 40%">Log In</button>
+
+
+    </form>
+
+    <p><a href="{% url "password_reset" %}">Forgotten your
+password?</a></p>
+
+  </div>
+
+{% endblock content %}
