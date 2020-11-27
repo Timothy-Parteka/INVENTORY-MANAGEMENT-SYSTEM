@@ -17,8 +17,8 @@ class StockIn(models.Model):
     date_purchased = models.DateTimeField(default=now)
     business_name = models.CharField(max_length=255, null=True, blank=True)
     item_received = models.CharField(max_length=255, choices=ITEM_RECEIVED, null=True, verbose_name='item received')
-    date_received = models.DateTimeField(default=now)
-    received_by = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    date_received = models.DateTimeField(default=now, null=True, blank=True)
+    received_by = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.item_ref_no
