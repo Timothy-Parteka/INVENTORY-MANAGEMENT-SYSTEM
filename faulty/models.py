@@ -26,6 +26,11 @@ class Faulty(models.Model):
     #         (TENTH_FLOOR_DATAENTRY, 'Tenth Floor Data Entry'),
     #         (TENTH_FLOOR_FORMER_PREVALIDATION_ROOM, 'Tenth Floor Former Prevalidation Room'),
     #     )
+    
+    ITEM_REPAIRED = (
+        ('PENDING', 'pending')
+        ('REPAIRED', 'repaired')
+    )
 
     item = models.CharField(max_length=200)
 
@@ -35,7 +40,7 @@ class Faulty(models.Model):
 
     from_location = models.CharField(max_length=200)
 
-    repaired = models.BooleanField(default=False)
+    repaired = models.CharField(max_length=200, choices=ITEM_REPAIRED, null=True)
 
     date_repaired = models.DateTimeField(default=now, null=True, blank=True)
 
